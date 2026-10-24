@@ -1139,7 +1139,7 @@ const PARTS = [
       },
       {
         id: "chilli", type: "radio", title: "Chilli containers", kind: "Reaper · Scorpion · Habanero",
-        sub: "All six options side by side. Pick the one that fits your space and patience.",
+        sub: "Six ways to pot the three chillies. Pick the one that fits your space and patience.",
         callout: "<b>One pot per plant is best for superhots:</b> each grows about 1 m wide. A full-grown superhot can use 1–2 L of water a day in summer, so check the reservoir weekly.",
         options: [
           { id: "A", letter: "A", rec: true, title: "Berberis DUO + Takealot 2-pack", retailer: `${GG} + ${TAL}`, price: "R985", est: 985, soil: 44,
@@ -1582,11 +1582,14 @@ const SOIL = (() => {
   const dryMix = 23, dryPerlite = 12;
   const soil = Math.round(thirsty * .6), compost = Math.round(thirsty * .25), thirstyPerlite = Math.round(thirsty * .15);
   return { thirsty, dryMix, dryPerlite, soil, compost, thirstyPerlite,
-    cactusBags: Math.ceil(dryMix / 5), vegBags: Math.ceil(soil / 15), perliteBags: Math.ceil((dryPerlite + thirstyPerlite) / 3) };
+    cactusBags: Math.ceil(dryMix / 5), vegBags: Math.ceil(soil / 15) };
 })();
 const SL_GROUPS = (() => {
   const link = (id) => findItem(id).url;
-  const cactus = findItem("stcactus"), perlite = findItem("stperlite"), veg = findItem("veghead");
+  const cactus = findItem("stcactus"), perlite = findItem("stperlite"), veg = findItem("veghead"), big_perlite = findItem("perlite");
+  const perlite_litres = SOIL.dryPerlite + SOIL.thirstyPerlite;
+  const small_perlite_bags = Math.max(0, Math.ceil((perlite_litres - 10) / 3));
+  const perlite_est = big_perlite.est + small_perlite_bags * perlite.est;
   return [
     { title: "Pots & troughs", sub: "", items: [
       { id: "trough", what: "Terracotta trough, 50–60 cm + tray", why: "thyme, oregano, marjoram · open drainage holes", ask: true },
@@ -1599,7 +1602,7 @@ const SL_GROUPS = (() => {
     ] },
     { title: "Soil & grit", sub: `${SOIL.dryMix + SOIL.dryPerlite} L dry mix · ${SOIL.thirsty} L thirsty mix`, items: [
       { id: "cactus", what: `${cactus.title} × ${SOIL.cactusBags}`, why: `${cactus.price} each · dry mix ≈${SOIL.dryMix} L`, price: money2(SOIL.cactusBags * cactus.est), est: SOIL.cactusBags * cactus.est, url: cactus.url },
-      { id: "perlite", what: `${perlite.title} × ${SOIL.perliteBags}`, why: `${perlite.price} each · ${SOIL.dryPerlite} L dry + ${SOIL.thirstyPerlite} L thirsty mix · ask for a bigger bag`, price: money2(SOIL.perliteBags * perlite.est), est: SOIL.perliteBags * perlite.est, url: perlite.url },
+      { id: "perlite", what: `Perlite, about ${perlite_litres} L`, why: `${SOIL.dryPerlite} L dry + ${SOIL.thirstyPerlite} L thirsty mix · ask in store for a big bag first · otherwise 1 × Takealot 10 L (R159, next day) + ${small_perlite_bags} × ${perlite.title} at ${perlite.price}`, price: money2(perlite_est), est: perlite_est, url: perlite.url },
       { id: "veg", what: `Vegetable &amp; Herb Mix 15dm³ × ${SOIL.vegBags}`, why: `R39.99 each · the thirsty mix’s ≈${SOIL.soil} L of soil`, price: money2(SOIL.vegBags * 39.99), est: SOIL.vegBags * 39.99, url: veg.url },
       { id: "compost", what: `Compost, about ${SOIL.compost} L`, why: "the thirsty mix’s 25%", ask: true },
     ] },
