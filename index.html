@@ -31,7 +31,7 @@ body{
 }
 img{max-width:100%;display:block}
 a{color:var(--sage);text-decoration-thickness:1px;text-underline-offset:3px}
-a:hover{color:var(--terra)}
+@media (hover:hover){a:hover{color:var(--terra)}}
 h1,h2,h3,h4{font-family:var(--display);font-weight:600;margin:0;line-height:1.05;letter-spacing:-.012em}
 p{margin:0 0 .8em}
 .latin{font-style:italic;color:var(--ink-3);font-family:var(--body);font-weight:400;letter-spacing:0}
@@ -79,7 +79,7 @@ main{position:relative}
 .toc a::before{content:counter(toc);font-family:var(--hand);font-size:22px;color:var(--terra);width:18px}
 .toc a .dots{flex:1;border-bottom:1.5px dotted rgba(39,38,31,.35);transform:translateY(-4px)}
 .toc a .pg{font-family:var(--hand);color:var(--ink-3);font-size:19px}
-.toc a:hover{color:var(--terra)}
+@media (hover:hover){.toc a:hover{color:var(--terra)}}
 
 .plate{position:relative;background:#f7f0de;border:1px solid rgba(39,38,31,.22);padding:26px 22px 22px;transform:rotate(1.4deg);box-shadow:0 1px 0 rgba(0,0,0,.04),10px 14px 30px -18px rgba(70,50,20,.45)}
 .plate::before,.plate::after{content:"";position:absolute;width:96px;height:28px;background:rgba(222,206,160,.72);box-shadow:0 1px 2px rgba(0,0,0,.08)}
@@ -146,7 +146,7 @@ main{position:relative}
 .opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:18px}
 .opts.wide{grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
 .opt{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid rgba(39,38,31,.28);border-radius:4px 9px 5px 8px/8px 4px 9px 5px;padding:14px 14px 14px;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s,background .2s}
-.opt:hover{transform:translateY(-2px);box-shadow:0 8px 18px -12px rgba(60,45,20,.5)}
+@media (hover:hover){.opt:hover{transform:translateY(-2px);box-shadow:0 8px 18px -12px rgba(60,45,20,.5)}}
 .opt input{position:absolute;opacity:0;pointer-events:none}
 .opt .mark{position:absolute;top:12px;left:12px;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink-2);background:var(--paper);z-index:2}
 .opt.is-on{border-color:var(--sage);box-shadow:inset 0 0 0 1.5px var(--sage),4px 5px 0 var(--sage-wash);background:#f8faf1}
@@ -176,10 +176,10 @@ main{position:relative}
 
 .rows{display:flex;flex-direction:column;border-top:1px solid var(--rule)}
 .row{display:grid;grid-template-columns:28px 68px minmax(0,1fr) auto;gap:6px 16px;align-items:center;padding:12px 4px;border-bottom:1px solid var(--rule);cursor:pointer;position:relative}
-.row:hover{background:rgba(205,216,187,.22)}
+@media (hover:hover){.row:hover{background:rgba(205,216,187,.22)}}
 .row input{position:absolute;opacity:0;pointer-events:none}
 .box{width:22px;height:22px;border:1.5px solid var(--ink-2);border-radius:3px;background:var(--card);position:relative}
-.row.is-on .box::after{content:"";position:absolute;left:3px;top:-6px;width:20px;height:22px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 22'%3E%3Cpath d='M2 12C5 14 7 17 8 20C10 13 14 6 19 1' fill='none' stroke='%235b7650' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat}
+.row.is-on .box::after,.sl-item.is-on .box::after{content:"";position:absolute;left:3px;top:-6px;width:20px;height:22px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 22'%3E%3Cpath d='M2 12C5 14 7 17 8 20C10 13 14 6 19 1' fill='none' stroke='%235b7650' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat}
 .row:has(input:focus-visible) .box{outline:2px dashed var(--terra);outline-offset:2px}
 .row:not(.is-on) .row-body,.row:not(.is-on) .thumb,.row:not(.is-on) .row-price{opacity:.62}
 .thumb{width:68px;height:68px;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
@@ -220,7 +220,7 @@ main{position:relative}
 .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .btn{font-family:var(--body);font-size:15px;font-weight:500;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);padding:7px 14px;border-radius:999px;cursor:pointer}
 .btn.ghost{background:transparent;color:var(--ink)}
-.btn:hover{background:var(--terra);border-color:var(--terra);color:#fff}
+@media (hover:hover){.btn:hover{background:var(--terra);border-color:var(--terra);color:#fff}}
 .checked-note{font-size:13px;color:var(--ink-3);margin-top:6px}
 
 /* ---------- potting ---------- */
@@ -418,6 +418,139 @@ footer li{margin-bottom:8px}
 }
 .tally-toggle{display:none;font-size:14px;background:none;border:0;color:var(--sage);text-decoration:underline;cursor:pointer;padding:0;font-family:var(--body)}
 
+/* phone-only helpers: layout wrappers vanish and toggles hide above 600px */
+.opt-text,.card-name,.card-more{display:contents}
+.more-opts,.card-toggle,.tt-short,.season-list{display:none}
+
+/* ---------- Stodels-only list ---------- */
+.sl-note{background:#f6e3d5;border:1.5px solid var(--terra);border-radius:8px;padding:14px 18px;margin:0 0 26px;max-width:80ch;font-size:17px;line-height:1.5}
+.sl-note b{font-weight:600}
+.sl-grid{columns:2 340px;column-gap:44px}
+.sl-group{break-inside:avoid;padding-top:14px}
+.sl-group h3{font-family:var(--hand);font-size:27px;font-weight:600;color:var(--terra);border-bottom:2px solid var(--ink);padding-bottom:2px;margin:0}
+.sl-group h3 span{font-family:var(--body);font-size:15px;font-weight:400;color:var(--ink-3);margin-left:6px}
+.sl-item{position:relative;display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:2px 12px;align-items:start;padding:8px 2px;border-bottom:1px dotted var(--rule);cursor:pointer;font-size:16px;line-height:1.4}
+.sl-item input{position:absolute;opacity:0;pointer-events:none}
+.sl-item .box{margin-top:1px}
+.sl-item:has(input:focus-visible) .box{outline:2px dashed var(--terra);outline-offset:2px}
+.sl-what b{font-weight:600}
+.sl-why{color:var(--ink-3);font-size:14.5px}
+.sl-ask{font-family:var(--hand);font-size:19px;color:var(--terra);white-space:nowrap}
+.sl-price{display:flex;align-items:baseline;justify-content:flex-end;gap:10px;font-family:var(--display);font-size:17px;font-weight:500;white-space:nowrap;font-variant-numeric:lining-nums}
+.sl-price .na{font-family:var(--body);font-style:italic;font-weight:400;font-size:14.5px;color:var(--ink-3)}
+.sl-price a{font-family:var(--body);font-size:14px;font-weight:500}
+.sl-item.is-on .sl-what,.sl-item.is-on .sl-price{opacity:.55}
+.sl-item.is-on .sl-what b{text-decoration:line-through;text-decoration-thickness:1.5px}
+.sl-foot{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;margin-top:22px;padding-top:12px;border-top:1px solid var(--rule)}
+.sl-total{margin:0;font-size:14px;color:var(--ink-3);max-width:70ch;line-height:1.45}
+.sl-total b{font-family:var(--display);font-size:20px;font-weight:600;color:var(--ink)}
+.sl-btns{display:flex;gap:8px;flex-wrap:wrap}
+
+/* ---------- phone ---------- */
+@media screen and (max-width:600px){
+  /* price rows wrap instead of running off the right edge */
+  .row-price{white-space:normal;display:flex;flex-wrap:wrap;align-items:center;column-gap:10px;line-height:1.25}
+  .row-price small,.row-price a{margin-left:0}
+  .row-price a{display:inline-flex;align-items:center;min-height:40px;padding:0 6px;margin:-4px -6px -6px}
+
+  /* tally: compact bar docked to the bottom of the screen while the shopping list scrolls */
+  .shop{display:block}
+  .tally-col{position:sticky;bottom:0;margin:0 calc(-1 * var(--gutter))}
+  .tally{display:flex;align-items:center;gap:0 12px;padding:4px var(--gutter) calc(4px + env(safe-area-inset-bottom));border-width:1px 0 0}
+  .tally .tl.total{flex:1;align-items:center;padding:0}
+  .tally .tl.total span:first-child{font-size:15px}
+  .tally .tl.total span:last-child{font-size:24px}
+  .tally:not(.open) .unpriced{display:none}
+  .tally-toggle{display:inline-flex!important;align-items:center;min-height:44px;padding:0 2px;font-size:15px;white-space:nowrap}
+  .tt-long{display:none}
+  .tt-short{display:inline}
+  .tally.open{display:flex;flex-direction:column;align-items:stretch;max-height:78vh;max-height:78dvh;overflow-y:auto;overscroll-behavior:contain;padding-top:2px}
+  .tally.open .tally-toggle{order:-1;align-self:flex-end}
+  .tally.open h3{margin-top:-6px}
+  .tally.open .tl.total{flex:none;padding-top:8px}
+  .tally.open .btns{margin-bottom:4px}
+  .btn{min-height:44px}
+
+  /* option cards: thumbnail beside the text */
+  .slot{margin-bottom:30px}
+  .opts,.opts.wide{gap:12px}
+  .opt{display:grid;grid-template-columns:88px minmax(0,1fr);column-gap:12px;align-items:start;padding:10px 12px 8px}
+  .opt .media{grid-column:1;grid-row:1;width:88px;height:88px;aspect-ratio:auto;margin:30px 0 8px;padding:0;border:1px solid var(--rule);border-radius:4px;background:var(--paper);gap:2px;overflow:hidden}
+  .opt .media.multi{grid-auto-flow:row;grid-auto-columns:auto;grid-auto-rows:minmax(0,1fr);height:124px}
+  .opt .media .ph{border:0;border-radius:0}
+  .opt .ph svg{width:92%}
+  .opt .ph span,.opt .ph svg text{display:none}
+  .opt-text{display:block;grid-column:2;grid-row:1;padding-top:2px}
+  .opt .stamp{position:static;display:inline-block;font-size:12px;letter-spacing:.12em;transform:rotate(-2deg);margin:0 0 6px;padding:2px 6px 1px}
+  .opt .letter{top:7px;font-size:24px}
+  .opt-title{font-size:16.5px}
+  .opt-ret{font-size:18px;margin:1px 0 3px}
+  .opt-price{font-size:22px;margin-bottom:4px}
+  .opt-price s{font-size:15px}
+  .opt .parts,.opt .kv,.opt .opt-note,.opt .opt-link{grid-column:1/-1}
+  .parts{margin-bottom:6px;font-size:14px}
+  .parts li{align-items:center;padding:0}
+  .parts a{display:inline-flex;align-items:center;min-height:40px}
+  .kv{grid-template-columns:78px 1fr;gap:2px 8px;font-size:14px;line-height:1.35;margin-bottom:6px}
+  .kv b{font-size:12px;letter-spacing:.08em}
+  .opt-note{font-size:14px;line-height:1.4;padding:5px 8px;margin-bottom:4px}
+  .opt-link{display:inline-flex;align-items:center;justify-self:start;min-height:40px;margin:0}
+  .opts:not(.expanded):has(> .opt.is-on) > .opt:not(.is-on){display:none}
+  .more-opts{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;margin-top:10px;padding:6px 14px;font-family:var(--body);font-size:16px;font-weight:500;color:var(--sage);background:rgba(250,246,236,.6);border:1.5px dashed var(--sage-2);border-radius:999px;cursor:pointer}
+  .more-opts:focus-visible{outline:2px dashed var(--terra);outline-offset:3px}
+
+  /* potting diagrams: wider, so the hand-lettered labels reach 12px */
+  .recipe{padding:20px 16px 12px}
+  .diagram{width:calc(100% + 32px);max-width:none;margin:4px -16px 14px;overflow:visible}
+  .diagram text{font-size:24px}
+
+  /* care cards: sprig beside the name, the rest behind a tap */
+  .cards{grid-template-columns:1fr;gap:14px}
+  .card{display:grid;grid-template-columns:92px minmax(0,1fr);align-items:center}
+  .card .art{position:static;grid-column:1;grid-row:1;align-self:stretch;height:auto;padding:30px 0 6px;border-bottom:0;border-right:1px solid var(--rule)}
+  .card .art svg{height:104px}
+  .card .art .no{top:6px;left:10px;font-size:20px}
+  .grp{top:10px;right:10px;font-size:12px;letter-spacing:.12em}
+  .card .bd{display:contents}
+  .card-name{display:block;grid-column:2;grid-row:1;padding:36px 12px 10px 14px}
+  .card h3{font-size:25px}
+  .card .latin{font-size:15.5px;margin:2px 0 2px}
+  .shu{margin:2px 0 0}
+  .card .icons{grid-column:1/-1;margin:0;border-bottom:0}
+  .card-toggle{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;min-height:44px;padding:0 14px;font-family:var(--hand);font-size:21px;color:var(--sage);background:none;border:0;border-top:1px solid var(--rule);cursor:pointer;text-align:left}
+  .card-toggle:focus-visible{outline:2px dashed var(--terra);outline-offset:-4px}
+  .card-more{display:none}
+  .card.is-open .card-more{display:block;grid-column:1/-1;padding:4px 14px 14px}
+
+  /* season: one row of month chips per activity */
+  .season-wrap,.season-hint{display:none!important}
+  .season-list{display:block;background:var(--card);border:1px solid rgba(39,38,31,.24);padding:4px 14px 8px}
+  .sc-key{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;padding:8px 0 6px;border-bottom:2px solid var(--ink);font-size:13px;color:var(--ink-3)}
+  .sc-key i{display:inline-block;width:16px;height:12px;border-radius:3px;outline:2px solid var(--terra);outline-offset:1px;margin-right:6px;vertical-align:-1px;background:rgba(39,38,31,.06)}
+  .sc-act{padding:9px 0 10px;border-bottom:1px dotted var(--rule)}
+  .sc-act:last-child{border-bottom:0}
+  .sc-label{display:block;font-weight:500;font-size:16px;line-height:1.25}
+  .sc-note{font-family:var(--hand);font-size:18px;color:var(--ink-3);margin-left:6px}
+  .sc-months{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px;max-width:330px;margin-top:6px}
+  .sc-mo{display:flex;align-items:center;justify-content:center;height:24px;font-family:var(--display);font-size:12px;font-weight:500;color:var(--ink-3);background:rgba(39,38,31,.06);border-radius:6px 4px 7px 4px}
+  .sc-mo.on{color:#fff;text-shadow:0 1px 1px rgba(0,0,0,.2)}
+  .sc-mo.now{outline:1.5px solid var(--terra);outline-offset:1px}
+  .season-notes{margin-top:24px}
+
+  /* tap targets and minimum text size */
+  .toc a{padding:9px 0}
+  .log input{min-height:40px}
+  footer .small a{display:inline-flex;align-items:center;min-height:44px}
+  .myth a,footer ol a{padding:12px 0}
+  .sl-note{font-size:15.5px;line-height:1.45;padding:12px 14px;margin-bottom:16px}
+  .sl-grid{columns:1}
+  .sl-item{gap:2px 10px;font-size:15.5px}
+  .sl-price{font-size:16px}
+  .sl-price{flex-direction:column;align-items:flex-end;gap:0}
+  .sl-why{font-size:14px}
+  .sl-price a{display:inline-flex;align-items:center;min-height:40px;margin:-9px 0 -12px}
+}
+
 /* ---------- print ---------- */
 @media print{
   @page{margin:14mm}
@@ -465,6 +598,13 @@ footer li{margin-bottom:8px}
   body.print-list .page:not(#shopping),body.print-list footer,body.print-list .hero-lower .toc{display:none!important}
   body.print-list .hero{padding:0}
   body.print-list .hero-lower{display:none}
+  .more-opts,.card-toggle,.sl-btns,.sl-price a{display:none!important}
+  .sl-note{border-color:#000;background:none}
+  .sl-grid{columns:2;column-gap:24px}
+  .sl-item{break-inside:avoid;padding:4px 0;font-size:10pt}
+  .sl-item.is-on .sl-what,.sl-item.is-on .sl-price{opacity:1}
+  body.print-stodels .hero,body.print-stodels .page:not(#stodels-only),body.print-stodels footer{display:none!important}
+  body.print-stodels #stodels-only{break-before:auto}
 }
 </style>
 </head>
@@ -504,6 +644,7 @@ footer li{margin-bottom:8px}
             <li><a href="#placement">Placement map<span class="dots"></span><span class="pg">sun</span></a></li>
             <li><a href="#care">Care cards<span class="dots"></span><span class="pg">grow</span></a></li>
             <li><a href="#season">Season strip<span class="dots"></span><span class="pg">year</span></a></li>
+            <li><a href="#stodels-only">Stodels-only list<span class="dots"></span><span class="pg">one trip</span></a></li>
             <li><a href="#sources">Sources<span class="dots"></span><span class="pg">refs</span></a></li>
           </ol>
         </nav>
@@ -538,7 +679,7 @@ footer li{margin-bottom:8px}
           <div class="tl"><span>Stodels trip</span><span id="t-stodels">R0</span></div>
           <div class="tl total"><span>Estimated total</span><span id="t-total">R0</span></div>
           <p class="unpriced" id="t-unpriced"></p>
-          <button class="tally-toggle" type="button" id="tally-toggle">show the small print &amp; soil maths</button>
+          <button class="tally-toggle" type="button" id="tally-toggle" aria-expanded="false"><span class="tt-long">show the small print &amp; soil maths</span><span class="tt-short">details ▴</span></button>
           <p class="fine">Where a listing gives a range, the tally counts its midpoint; “from” prices count the starting price; items priced in store count as R0 and are listed above. Delivery fees are not included.</p>
           <div class="soilmath" id="soilmath"></div>
           <div class="btns">
@@ -757,6 +898,26 @@ footer li{margin-bottom:8px}
     </header>
     <p class="season-hint hand" style="display:none;font-size:20px;color:var(--ink-3);margin:0 0 6px">swipe the strip sideways →</p>
     <div class="season-wrap"><div class="season" id="season-grid"></div></div>
+    <div class="season-list" id="season-list"></div>
+  </div>
+</section>
+
+<section class="page" id="stodels-only">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="sec-no">no. 8</span>
+      <h2>Stodels-<em>only</em> list</h2>
+      <p class="sec-sub">Skipping Grow Guru, Takealot and Plantify? Everything for the eleven plants in one Stodels trip, with in-store swaps for the online pots. Ticks are saved in this browser.</p>
+    </header>
+    <p class="sl-note"><b>Without self-watering pots, the thirsty group needs you more often.</b> Basil, Thai basil, mint and the chillies will want watering about every 3–5 days in summer, instead of a reservoir refill every 7–10 days (full-size chillies in January–February even more often: a grown superhot can drink 1–2 L a day). Ask whether Stodels has self-watering pots or troughs in store. If it does, take those for the basil, mint and chilli slots, and the watering rules above apply unchanged.</p>
+    <div class="sl-grid" id="sl-list"></div>
+    <div class="sl-foot">
+      <p class="sl-total" id="sl-total"></p>
+      <div class="sl-btns">
+        <button class="btn" type="button" id="sl-print">Print this list</button>
+        <button class="btn ghost" type="button" id="sl-clear">Clear ticks</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1138,11 +1299,13 @@ function optionCard(group, o) {
     <input type="radio" name="${group.id}" value="${o.id}">
     <span class="mark" aria-hidden="true"></span>
     ${o.letter ? `<span class="letter">${o.letter}</span>` : ""}
-    ${o.rec ? `<span class="stamp">Recommended</span>` : ""}
-    <span class="media">${media}</span>
-    <span class="opt-title">${o.title}</span>
-    <span class="opt-ret">${o.retailer}</span>
-    ${price}${parts}
+    <span class="media${o.parts && o.parts.length > 1 ? " multi" : ""}">${media}</span>
+    <span class="opt-text">
+      ${o.rec ? `<span class="stamp">Recommended</span>` : ""}
+      <span class="opt-title">${o.title}</span>
+      <span class="opt-ret">${o.retailer}</span>
+      ${price}
+    </span>${parts}
     ${kv ? `<span class="kv">${kv}</span>` : ""}
     ${o.note ? `<span class="opt-note">${o.note}</span>` : ""}
     ${link ? `<a class="opt-link" href="${link}" target="_blank" rel="noopener">View listing ↗</a>` : ""}
@@ -1165,6 +1328,13 @@ function checkRow(group, item) {
   </label>`;
 }
 
+const moreLabel = (count, expanded) => expanded ? "Hide other options" : `Show ${count} other option${count === 1 ? "" : "s"}`;
+function moreButton(group) {
+  const others = group.options.length - 1;
+  if (others < 1) return "";
+  return `<button type="button" class="more-opts" aria-expanded="false" aria-controls="opts-${group.id}" data-others="${others}">${moreLabel(others, false)}</button>`;
+}
+
 function renderShop() {
   const html = PARTS.map((part) => `
     <div class="part" id="part-${part.id}">
@@ -1175,7 +1345,7 @@ function renderShop() {
           ${group.sub ? `<p class="slot-sub">${group.sub}</p>` : ""}
           ${group.callout ? `<p class="callout">${group.callout}</p>` : ""}
           ${group.type === "radio"
-            ? `<div class="opts${group.wide ? " wide" : ""}">${group.options.map((o) => optionCard(group, o)).join("")}</div>`
+            ? `<div class="opts${group.wide ? " wide" : ""}" id="opts-${group.id}">${group.options.map((o) => optionCard(group, o)).join("")}</div>${moreButton(group)}`
             : `<div class="rows">${group.items.map((i) => checkRow(group, i)).join("")}</div>`}
         </fieldset>`).join("")}
       ${part.id === "stodels" ? STORES_HTML : ""}
@@ -1288,12 +1458,15 @@ function renderCards() {
     <article class="card" id="card-${p.key}">
       <div class="art"><span class="no">${String(index + 1).padStart(2, "0")}</span><span class="grp ${p.group}">${p.group}</span>${herbInline(p.key)}</div>
       <div class="bd">
-        <h3>${p.name}</h3><span class="latin">${p.latin}</span>
-        ${p.shu ? `<span class="shu">${p.shu}</span>` : ""}
+        <div class="card-name"><h3>${p.name}</h3><span class="latin">${p.latin}</span>
+        ${p.shu ? `<span class="shu">${p.shu}</span>` : ""}</div>
         <div class="icons"><div>${ICON.sun}${p.sun}</div><div>${ICON.water}${p.water}</div><div>${ICON.pot}${p.pot}</div></div>
+        <button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-${p.key}"><span>harvest &amp; watch-out<span class="sr"> for ${p.name}</span></span><span class="card-toggle-label">more ▾</span></button>
+        <div class="card-more" id="more-${p.key}">
         <p class="fact"><b>harvest</b>${p.harvest}</p>
         <p class="fact watch"><b>watch out</b>${p.watch}</p>
         ${p.subnote ? `<div class="subnote">${p.subnote}</div>` : ""}
+        </div>
       </div>
     </article>`).join("");
 }
@@ -1370,7 +1543,18 @@ function renderSeason() {
   };
   place();
   window.addEventListener("resize", place);
+
+  document.getElementById("season-list").innerHTML =
+    `<p class="sc-key"><span><i></i>${MONTHS[0]} 2026, you are here</span><span>months run Oct → Sep</span></p>`
+    + ROWS.map(([label, cls, a, b, note]) => `<div class="sc-act">
+      <span class="sc-label">${label}${note ? `<span class="sc-note">${note}</span>` : ""}</span>
+      <div class="sc-months" role="img" aria-label="${label.replace("&amp;", "and")}: ${MONTHS[a - 1]} to ${MONTHS[b - 1]}">${MONTHS.map((m, i) => {
+        const on = i + 1 >= a && i + 1 <= b;
+        return `<span class="sc-mo${on ? " on" : ""}${i === 0 ? " now" : ""}"${on ? ` style="background:${CHIP_COLOUR[cls]}"` : ""} aria-hidden="true">${m[0]}</span>`;
+      }).join("")}</div>
+    </div>`).join("");
 }
+const CHIP_COLOUR = { plant: "var(--terra-2)", sow: "var(--chilli)", basil: "var(--sage-2)", ripen: "var(--chilli)", dry: "var(--sage)", mint: "#7fb08a", winter: "var(--water)", prune: "#8a6c48" };
 
 const LOG_ROWS = [["basil", "Basil trough"], ["mint", "Mint pot"], ["chilli1", "Chilli pot 1"], ["chilli2", "Chilli pot 2"], ["chilli3", "Chilli pot 3"]];
 function renderLog() {
@@ -1381,6 +1565,89 @@ function renderLog() {
     if (!key) return;
     state.log[key] = event.target.value;
     save();
+  });
+}
+
+/* =========================================================
+   Stodels-only list: one in-store trip, no online orders.
+   Prices and links come from PARTS; quantities from the soil maths.
+   ========================================================= */
+const findItem = (id) => { for (const p of PARTS) for (const g of p.groups) for (const o of g.options || g.items) if (o.id === id) return o; return null; };
+const money2 = (n) => "R" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const SEEDLING_EST = 80;
+const SOIL = (() => {
+  // Litres per pot, taken from the shopping cards: a 60 cm trough holds 15 L (so 50 cm ≈ 12 L),
+  // a 25 cm pot 6 L, a 30 cm pot 13–15 L. The dry group is the soil maths' 35 L (23 L mix + 12 L perlite).
+  const thirsty = 12 + 6 + 3 * 14;
+  const dryMix = 23, dryPerlite = 12;
+  const soil = Math.round(thirsty * .6), compost = Math.round(thirsty * .25), thirstyPerlite = Math.round(thirsty * .15);
+  return { thirsty, dryMix, dryPerlite, soil, compost, thirstyPerlite,
+    cactusBags: Math.ceil(dryMix / 5), vegBags: Math.ceil(soil / 15), perliteBags: Math.ceil((dryPerlite + thirstyPerlite) / 3) };
+})();
+const SL_GROUPS = (() => {
+  const link = (id) => findItem(id).url;
+  const cactus = findItem("stcactus"), perlite = findItem("stperlite"), veg = findItem("veghead");
+  return [
+    { title: "Pots & troughs", sub: "", items: [
+      { id: "trough", what: "Terracotta trough, 50–60 cm + tray", why: "thyme, oregano, marjoram · open drainage holes", ask: true },
+      { id: "rosemary-pot", what: "Terracotta Pot Province, ~30 cm", why: "rosemary · larger sizes cost more", price: "from R299.99", est: 299.99, url: link("province") },
+      { id: "sage-pot", what: "Terracotta Pot Province, small", why: "sage · 20–25 cm", price: "R299.99", est: 299.99, url: link("sagepot") },
+      { id: "basil-box", what: "Versilia window box 50 cm + tray", why: "both basils · or a self-watering trough, if stocked", price: "R239.99", est: 239.99, url: link("versilia") },
+      { id: "mint-pot", what: "Pot of about 25 cm", why: "mint, alone · plastic, or self-watering if stocked", ask: true },
+      { id: "chilli-pots", what: "3 × pots of 30 cm+", why: "one per chilli · or one shared 45 cm+ pot on a big tray", ask: true },
+      { id: "saucers", what: "Plastic Saucer Terracotta × 6", why: "35 cm × 4 at R69.99 (rosemary, chillies), 28 cm × 2 at R44.99 (sage, mint)", price: money2(4 * 69.99 + 2 * 44.99), est: 4 * 69.99 + 2 * 44.99, url: findItem("saucers").url },
+    ] },
+    { title: "Soil & grit", sub: `${SOIL.dryMix + SOIL.dryPerlite} L dry mix · ${SOIL.thirsty} L thirsty mix`, items: [
+      { id: "cactus", what: `${cactus.title} × ${SOIL.cactusBags}`, why: `${cactus.price} each · dry mix ≈${SOIL.dryMix} L`, price: money2(SOIL.cactusBags * cactus.est), est: SOIL.cactusBags * cactus.est, url: cactus.url },
+      { id: "perlite", what: `${perlite.title} × ${SOIL.perliteBags}`, why: `${perlite.price} each · ${SOIL.dryPerlite} L dry + ${SOIL.thirstyPerlite} L thirsty mix · ask for a bigger bag`, price: money2(SOIL.perliteBags * perlite.est), est: SOIL.perliteBags * perlite.est, url: perlite.url },
+      { id: "veg", what: `Vegetable &amp; Herb Mix 15dm³ × ${SOIL.vegBags}`, why: `R39.99 each · the thirsty mix’s ≈${SOIL.soil} L of soil`, price: money2(SOIL.vegBags * 39.99), est: SOIL.vegBags * 39.99, url: veg.url },
+      { id: "compost", what: `Compost, about ${SOIL.compost} L`, why: "the thirsty mix’s 25%", ask: true },
+    ] },
+    { title: "Plants", sub: "all 11", items: [
+      { id: "thyme", what: "Thyme", why: "", ask: true, est: SEEDLING_EST },
+      { id: "rosemary", what: "Rosemary ‘Tony’, 20cm", why: "trailing: ask for an upright one", price: findItem("s-rosemary").price, est: findItem("s-rosemary").est, url: link("s-rosemary") },
+      { id: "oregano", what: "Oregano", why: "not listed online", ask: true, est: SEEDLING_EST },
+      { id: "marjoram", what: "Marjoram", why: "not listed online", ask: true, est: SEEDLING_EST },
+      { id: "sage", what: "Sage", why: "", ask: true, est: SEEDLING_EST },
+      { id: "basil", what: "Basil ‘Wild Magic’, 12cm", why: "", price: findItem("s-basil").price, est: findItem("s-basil").est, url: link("s-basil") },
+      { id: "thai", what: "Thai basil", why: "not listed online", ask: true, est: SEEDLING_EST },
+      { id: "mint", what: "Mint (spearmint), 12cm", why: "", price: findItem("s-mint").price, est: findItem("s-mint").est, url: link("s-mint") },
+      { id: "reaper", what: "Carolina Reaper, 14cm", why: "", price: findItem("p-reaper").price, est: findItem("p-reaper").est, url: link("p-reaper") },
+      { id: "scorpion", what: "Trinidad Scorpion, 14cm", why: "", price: findItem("p-scorpion").price, est: findItem("p-scorpion").est, url: link("p-scorpion") },
+      { id: "habanero", what: "Habanero, 14cm", why: "", price: findItem("p-habanero").price, est: findItem("p-habanero").est, url: link("p-habanero") },
+    ] },
+    { title: "Extras", sub: "", items: [
+      { id: "cork", what: "Cork mats × 3", why: "under the clay trough and pots", ask: true },
+    ] },
+  ];
+})();
+const SL_KEY = "sunroom-herb-garden:stodels-only:v1";
+let slTicks = {};
+try { slTicks = JSON.parse(localStorage.getItem(SL_KEY) || "{}") || {}; } catch (error) { /* storage unavailable: ticks are not remembered */ }
+const slSave = () => { try { localStorage.setItem(SL_KEY, JSON.stringify(slTicks)); } catch (error) { /* ignore */ } };
+
+function renderStodelsOnly() {
+  document.getElementById("sl-list").innerHTML = SL_GROUPS.map((g) => `<div class="sl-group">
+    <h3>${g.title}${g.sub ? `<span>${g.sub}</span>` : ""}</h3>
+    ${g.items.map((i) => `<label class="sl-item" data-sl="${i.id}">
+      <input type="checkbox" value="${i.id}">
+      <span class="box" aria-hidden="true"></span>
+      <span class="sl-what"><b>${i.what}</b>${i.why ? ` <span class="sl-why">· ${i.why}</span>` : ""}</span>
+      <span class="sl-price">${i.price ? i.price : i.ask ? `<span class="sl-ask">ask in store</span>` : `<span class="na">in store</span>`}${i.url ? `<a href="${i.url}" target="_blank" rel="noopener">View ↗</a>` : ""}</span>
+    </label>`).join("")}
+  </div>`).join("");
+  const all = SL_GROUPS.flatMap((g) => g.items);
+  const total = all.reduce((sum, i) => sum + (i.est || 0), 0);
+  const shelf = all.filter((i) => i.est == null).map((i) => i.what.replace(/,.*$/, "").toLowerCase());
+  const asked = all.filter((i) => i.ask && i.est != null).length;
+  document.getElementById("sl-total").innerHTML = `Rough total for this list ≈ <b>${money(total)}</b>. Listed prices as checked on 19 October 2026; the ${asked} seedlings without a price count as ${money(SEEDLING_EST)} each, as in the tally. Not included, priced on the shelf: ${shelf.join(", ")}.`;
+  applyStodelsTicks();
+}
+function applyStodelsTicks() {
+  document.querySelectorAll(".sl-item").forEach((el) => {
+    const on = !!slTicks[el.dataset.sl];
+    el.classList.toggle("is-on", on);
+    el.querySelector("input").checked = on;
   });
 }
 
@@ -1412,10 +1679,49 @@ document.getElementById("print-list").addEventListener("click", () => {
   document.body.classList.add("print-list");
   window.print();
 });
-window.addEventListener("afterprint", () => document.body.classList.remove("print-list"));
-document.getElementById("tally-toggle").addEventListener("click", (event) => {
+window.addEventListener("afterprint", () => document.body.classList.remove("print-list", "print-stodels"));
+const tallyToggle = document.getElementById("tally-toggle");
+tallyToggle.addEventListener("click", () => {
   const open = document.getElementById("tally").classList.toggle("open");
-  event.target.textContent = open ? "hide the small print" : "show the small print & soil maths";
+  tallyToggle.querySelector(".tt-long").textContent = open ? "hide the small print" : "show the small print & soil maths";
+  tallyToggle.querySelector(".tt-short").textContent = open ? "close ▾" : "details ▴";
+  tallyToggle.setAttribute("aria-expanded", String(open));
+});
+
+document.getElementById("shop-list").addEventListener("click", (event) => {
+  const button = event.target.closest(".more-opts");
+  if (!button) return;
+  const opts = document.getElementById(button.getAttribute("aria-controls"));
+  const expanded = opts.classList.toggle("expanded");
+  button.setAttribute("aria-expanded", String(expanded));
+  button.textContent = moreLabel(Number(button.dataset.others), expanded);
+  if (!expanded && opts.getBoundingClientRect().top < 0) opts.closest(".slot").scrollIntoView({ block: "start" });
+});
+
+document.getElementById("cards").addEventListener("click", (event) => {
+  const button = event.target.closest(".card-toggle");
+  if (!button) return;
+  const open = button.closest(".card").classList.toggle("is-open");
+  button.setAttribute("aria-expanded", String(open));
+  button.querySelector(".card-toggle-label").textContent = open ? "less ▴" : "more ▾";
+});
+
+renderStodelsOnly();
+document.getElementById("sl-list").addEventListener("change", (event) => {
+  const holder = event.target.closest("[data-sl]");
+  if (!holder) return;
+  slTicks[holder.dataset.sl] = event.target.checked;
+  slSave();
+  applyStodelsTicks();
+});
+document.getElementById("sl-clear").addEventListener("click", () => {
+  slTicks = {};
+  slSave();
+  applyStodelsTicks();
+});
+document.getElementById("sl-print").addEventListener("click", () => {
+  document.body.classList.add("print-stodels");
+  window.print();
 });
 })();
 </script>
